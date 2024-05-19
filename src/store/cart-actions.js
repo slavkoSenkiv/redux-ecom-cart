@@ -9,7 +9,7 @@ export const fetchCartData = () => {
     const fetchData = async () => {
       const response = await fetch(DB_URL);
       if (!response.ok) {
-        throw new Error('Cound not fetch cart data ');
+        throw new Error('Could not fetch cart data!');
       }
       const data = await response.json();
       return data;
@@ -28,7 +28,7 @@ export const fetchCartData = () => {
         uiActions.showNotification({
           status: 'error',
           title: 'Error!',
-          message: 'Fetching cart data failed!'
+          message: 'Fetching cart data failed!',
         })
       );
     }
@@ -41,12 +41,12 @@ export const sendCartData = (cart) => {
       uiActions.showNotification({
         status: 'pending',
         title: 'Sending...',
-        message: 'Sending cart data!'
+        message: 'Sending cart data!',
       })
     );
 
     const sendRequest = async () => {
-      const responce = await fetch(DB_URL, {
+      const response = await fetch(DB_URL, {
         method: 'PUT',
         body: JSON.stringify({
           items: cart.items,
@@ -54,7 +54,7 @@ export const sendCartData = (cart) => {
         })
       });
 
-      if (!responce.ok) {
+      if (!response.ok) {
         throw new Error('Sending cart data failed');
       }
     };
@@ -65,7 +65,7 @@ export const sendCartData = (cart) => {
         uiActions.showNotification({
           status: 'success',
           title: 'Success!',
-          message: 'Sent cart data successfully!'
+          message: 'Sent cart data successfully!',
         })
       );
     } catch (error) {
@@ -73,7 +73,7 @@ export const sendCartData = (cart) => {
         uiActions.showNotification({
           status: 'error',
           title: 'Error!',
-          message: 'Sending cart data failed!'
+          message: 'Sending cart data failed!',
         })
       );
     }
